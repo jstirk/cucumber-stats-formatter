@@ -54,7 +54,7 @@ module Cucumber
             stats << "#{passed} passed" if passed > 0
             stats << "#{failed} failed" if failed > 0
             stats.unshift("#{total} steps") if stats.size > 1
-            puts "#{feature} :: #{scenario} (#{stats.join(', ')})"
+            @io.print "#{feature} :: #{scenario} (#{stats.join(', ')})\n"
           end
         end
       end
