@@ -1,0 +1,37 @@
+Stats Formatter for Cucumber
+============================
+
+OVERVIEW:
+---------
+
+Simple formatter which outputs the stats for each Scenario in a way so as
+to be simple to parse for a CI system or task monitoring tool.
+
+Example output :
+User Authentication :: Unauthorized User to Dashboard (3 passed)
+User Authentication :: Admin User Can Access Account Tab (3 passed)
+User Authentication :: Existing User (7 passed)
+User Authentication :: Logged In User to Dashboard (9 passed)
+User Authentication :: Wrong Password (8 total, 5 passed, 3 failed)
+User Authentication :: Wrong Account (8 total, 8 failed)
+User Authentication :: Standard User Can Not Access Account Tab (3 passed)
+
+Where all the above scenarios (eg. "Unauthorized User to Dashboard") exists in
+the "User Authentication" feature.
+
+Any step which can't be run (eg. undefined, failed or skipped) is counted as
+a failed step.
+
+USAGE
+-----
+
+If you're using Rails, simply drop it in your features/support directory.
+
+Then, you can say :
+
+cucumber features/* -f Cucumber::Formatter::Stats
+
+Not using Rails? You just need to ensure that the file is somewhere it can be
+included, and call it like :
+
+cucumber features/* --require path/to/stats.rb -f Cucumber::Formatter::Stats
